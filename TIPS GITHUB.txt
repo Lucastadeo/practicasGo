@@ -17,4 +17,4 @@ git push -u origin main
 2) borrar un repositrio local
 rm -fr .git
 
-3) 
+3) libre para escribir
