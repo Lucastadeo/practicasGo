@@ -1,0 +1,120 @@
+1) 
+
+
+1) func multisalida() (int,stribg){
+      
+     return 42,"oscar fernando"
+
+}
+
+
+2) func retorna2() (n int,salida string){
+
+     n=10
+     salida = "oscar fernndo Montoya Reyes"      
+
+     return   // no hay necsidad de especificar el name de las variables para su salida dela funcion
+}
+
+
+3) /// fubciones anonimas
+
+suma:=func(var1,var2 int) int {
+
+       return var1+var2
+
+}
+
+4) funciones enclosure
+
+func scope() func() int {
+ 
+    outer_var:=2
+    foo:=func() int {
+          return outer_var
+      }
+
+    return foo
+}
+
+
+func main(){
+
+
+1)var x,salida=multisalida()
+2) var x,salida=retorna2()
+
+
+ 
+3) 
+
+suma:=func(var1,var2 int) int {
+
+       return var1+var2
+           }
+
+fmt.Println("respuesta ",suma(5,5))
+
+
+
+4)
+
+
+
+/***********  ejercio de refrigerador **************************) 
+
+
+
+Mamita necesitaba un favor debo pagar el internet y TV antes del viernes,,si sumerced puede prestarme la tarjeta credito para poder pagarlos y me permite diferirlo a3 cuotas
+serian $ 101.000 pesos... 
+
+
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+func find(item string, slice []string) bool {
+	for _, sliceItem := range slice {
+		if item == sliceItem {
+			return true
+		} // retorna verdadero si la cadena se encuentra en el slice
+	} // fin forange
+	return false
+}
+
+type Refrigerador []string
+
+func (r Refrigerador) Open() {
+	fmt.Println(" Opening  refrigerator")
+}
+
+func (r Refrigerador) Close() {
+	fmt.Println(" Closing refrigerator")
+}
+
+func (r Refrigerador) FindFood(food string) error {
+	r.Open()
+	defer r.Close()
+	if find(food, r) {
+		fmt.Println("Found ", food)
+	} else {
+		return fmt.Errorf(" %s not found ", food)
+	}
+	//defer r.Close()
+	return nil
+}
+
+func main() {
+	refrigerador := Refrigerador{"leche", "pizza", "salsa"}
+
+	for _, food := range []string{"leche", "Bananas"} {
+		error := refrigerador.FindFood(food)
+		if error != nil {
+			log.Fatal(error)
+		}
+	}
+
+}
